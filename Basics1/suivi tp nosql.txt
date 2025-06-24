@@ -1,0 +1,57 @@
+---run le conteneur mongo
+
+----docker exec -it mongodb bash
+
+✅ Exercice 3 : Lecture de données
+1. Trouver tous les Pokémon de type "Feu" :
+javascript
+Copier
+Modifier
+db.Pokemons.find({ Type: "Feu" })
+🔁 Si Type est un tableau, utilisez :
+
+javascript
+Copier
+Modifier
+db.Pokemons.find({ Type: { $in: ["Feu"] } })
+2. Trouver "Pikachu" :
+javascript
+Copier
+Modifier
+db.Pokemons.findOne({ Nom: "Pikachu" })
+✅ Exercice 4 : Mise à jour des données
+Mettre les CP de Pikachu à 900 :
+javascript
+Copier
+Modifier
+db.Pokemons.updateOne(
+  { Nom: "Pikachu" },
+  { $set: { CP: 900 } }
+)
+🔍 Pour valider :
+
+javascript
+Copier
+Modifier
+db.Pokemons.findOne({ Nom: "Pikachu" })
+✅ Exercice 5 : Suppression d’un Pokémon
+Supprimer "Bulbasaur" :
+javascript
+Copier
+Modifier
+db.Pokemons.deleteOne({ Nom: "Bulbasaur" })
+🔍 Pour valider :
+
+javascript
+Copier
+Modifier
+db.Pokemons.find({ Nom: "Bulbasaur" })
+🔁 Validation finale :
+Utilisez ces commandes pour vérifier :
+
+javascript
+Copier
+Modifier
+db.Pokemons.find().pretty()       // voir les documents
+db.Pokemons.countDocuments()      // nombre total
+db.Pokemons.find({ Nom: "Pikachu" })
